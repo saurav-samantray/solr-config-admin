@@ -1,0 +1,85 @@
+/*@import url(http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300ita‌​lic,400italic,500,500italic,700,700italic,900italic,900);
+html, body, html * {
+  font-family: 'Roboto', sans-serif;
+}*/
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap');
+
+html, body, html * {
+  font-family: 'Montserrat', sans-serif;
+}
+
+table {
+  border: 2px solid #42b983;
+  border-radius: 3px;
+  background-color: #fff;
+}
+
+th {
+  background-color: #42b983;
+  color: rgba(255, 255, 255, 0.66);
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+td {
+  background-color: #f9f9f9;
+}
+
+th,
+td {
+  min-width: 120px;
+  padding: 10px 20px;
+}
+
+.crs-primary-background{
+    background-color: #ffdd57;
+    color: #fff;
+}
+
+.crs-primary-color{
+    color: #000;
+}
+
+.ct-bg-panel{
+    background-color: #f0e0b9;
+}
+/*Page spinner related styling*/
+
+#cover-spin {
+position:fixed;
+width:100%;
+left:0;right:0;top:0;bottom:0;
+background-color: rgba(255,255,255,0.7);
+z-index:9999;
+/*display:none;*/
+}
+
+@-webkit-keyframes spin {
+from {-webkit-transform:rotate(0deg);}
+to {-webkit-transform:rotate(360deg);}
+}
+
+@keyframes spin {
+from {transform:rotate(0deg);}
+to {transform:rotate(360deg);}
+}
+
+#cover-spin::after {
+content:'';
+display:block;
+position:absolute;
+left:48%;top:40%;
+width:120px;height:120px;
+border-style:solid;
+border-color: #00d1b2;
+border-top-color:transparent;
+border-width: 4px;
+border-radius:100%;
+-webkit-animation: spin .8s linear infinite;
+animation: spin .8s linear infinite;
+}
+
