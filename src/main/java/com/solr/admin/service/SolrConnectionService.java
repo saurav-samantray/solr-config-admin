@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
+import java.util.List;
 
 @Service
 public class SolrConnectionService {
@@ -24,7 +25,7 @@ public class SolrConnectionService {
         return new SolrConnectionDetails();
     }
 
-    public SolrConnectionDetails fetchConnectionDetails() throws IOException, SolrServerException {
+    public SolrConnectionDetails fetchConnectionDetails() throws IOException {
         SolrConnectionDetails connectionDetails = new SolrConnectionDetails();
         if(null != SolrUtil.getZkConnection()){
             connectionDetails.setZkHostString(SolrUtil.getZkConnection().getZkServerAddress());
@@ -33,7 +34,11 @@ public class SolrConnectionService {
         }
         if(null != SolrUtil.getSolrConnection()){
             connectionDetails.setSolrConnected(true);
-            connectionDetails.setCollections(solrUtil.fetchCollections());
+            try {
+                connectionDetails.setCollections(solrUtil.fetchCollections());
+            }catch (SolrServerException e){
+                connectionDetails.setErrors(List.of(e.getMessage()));
+            }
         }
         return connectionDetails;
     }

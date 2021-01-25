@@ -3,9 +3,6 @@ package com.solr.admin.service;
 import com.solr.admin.payload.CollectionDetails;
 import com.solr.admin.utils.SolrUtil;
 import org.apache.solr.client.solrj.SolrServerException;
-import org.apache.solr.client.solrj.response.CollectionAdminResponse;
-import org.apache.solr.common.params.SolrParams;
-import org.apache.solr.common.util.NamedList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

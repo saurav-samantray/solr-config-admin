@@ -26,7 +26,27 @@
 </head>
 <body>
 <div id="app">
-    <nav class="navbar navbar-light bg-light">
+    <div class="position-absolute w-100 d-flex flex-column p-4">
+        <div class="toast ml-auto" role="alert" data-delay="5000" data-autohide="true">
+            <div class="toast-header">
+                <strong class="mr-auto text-primary">Message</strong>
+                <!--<small class="text-muted">3 mins ago</small>-->
+                <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <!--<div class="toast-body"> Something </div>-->
+            <div v-if="isError" class="toast-body"> {{errors}} </div>
+            <div v-else class="toast-body"> Success </div>
+            <!--<template v-if="isError">
+
+            </template>
+            <template v-else>
+                <div class="toast-body"> Success </div>
+            </template>-->
+        </div>
+    </div>
+    <nav class="navbar navbar-light bg-light fixed-top">
         <span class="navbar-brand mb-0 h1">Solr Manager</span>
     </nav>
     <div class="container">
@@ -44,7 +64,7 @@
                                 <form>
                                     <div class="form-group mx-sm-3 mb-2">
                                         <label for="zkHost" class="sr-only">Zookeeper Host</label>
-                                        <input type="text" v-model="zkHostString" class="form-control" id="zkHost" placeholder="Zookeeper Host">
+                                        <input type="text" v-model="zkHostString" class="form-control" id="zkHost" placeholder="<ZK Host>:<port>">
                                     </div>
                                     <button type="button" v-on:click="connect" class="btn btn-primary mb-2 ml-3" :disabled="isZkConnected && isSolrConnected">Connect</button>
                                     <button type="button" v-on:click="disconnect" class="btn btn-primary mb-2 ml-3" :disabled="!isZkConnected || !isSolrConnected">Disconnect</button>
@@ -158,24 +178,11 @@
         </div>
 </div>
 
-<!--<div aria-live="polite" aria-atomic="true" style="position: relative; min-height: 200px;">
-    <div class="toast" style="position: absolute; top: 0; right: 0;">
-        <div class="toast-header">
-            <strong class="mr-auto">Bootstrap</strong>
-            <small>11 mins ago</small>
-            <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        <div class="toast-body">
-            Hello, world! This is a toast message.
-        </div>
-    </div>
-</div>-->
-
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 <script src="js/index.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
 
 
 </body>

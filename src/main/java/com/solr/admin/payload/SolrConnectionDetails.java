@@ -17,4 +17,5 @@ public class SolrConnectionDetails {
     boolean solrConnected=false;
     List configSets;
     List collections;
+    private List<String> errors;
 }
